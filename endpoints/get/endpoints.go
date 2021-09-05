@@ -26,7 +26,6 @@ func ReturnSingleArticle(w http.ResponseWriter, r *http.Request) {
 	for _, article := range a.Articles {
 		if article.Id == key {
 			json.NewEncoder(w).Encode(article)
-			break
 		}
 	}
 }

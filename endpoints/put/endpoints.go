@@ -18,18 +18,11 @@ func UpdateArticle(w http.ResponseWriter, r *http.Request) {
 
 	for _, article := range a.Articles {
 		if article.Id == id {
-			body, _ := ioutil.ReadAll(r.Body)
 			var updatedArticle a.Article
+			body, _ := ioutil.ReadAll(r.Body)
 			json.Unmarshal(body, &updatedArticle)
 			article = updatedArticle
-			json.NewEncoder(w).Encode((article))
-			break
+			json.NewEncoder(w).Encode(article)
 		}
 	}
-
-	// body, _ := ioutil.ReadAll(r.Body)
-	// var article a.Article
-	// json.Unmarshal(body, &article)
-	// a.Articles = append(a.Articles, article)
-	// json.NewEncoder(w).Encode(article)
 }
