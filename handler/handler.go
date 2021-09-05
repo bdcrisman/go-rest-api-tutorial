@@ -4,14 +4,23 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/bdcrisman/rest-api-tutorial/endpoints"
+	get "github.com/bdcrisman/rest-api-tutorial/endpoints/get"
+	post "github.com/bdcrisman/rest-api-tutorial/endpoints/post"
 	"github.com/gorilla/mux"
 )
 
 func HandleRequests() {
 	router := mux.NewRouter().StrictSlash(true)
-	router.HandleFunc("/", endpoints.HomePage)
-	router.HandleFunc("/all", endpoints.ReturnAllArticles)
+
+	// GET
+	router.HandleFunc("/", get.HomePage)
+	router.HandleFunc("/all", get.ReturnAllArticles)
+	router.HandleFunc("/article/{id}", get.ReturnSingleArticle)
+
+	// POST
+	router.HandleFunc("/article", post.CreateNewArticle).Methods("POST")
+
+	// PUT
 
 	log.Fatal(http.ListenAndServe(":10000", router))
 }
