@@ -1,12 +1,17 @@
 package postEndpoints
 
 import (
-	"fmt"
+	"encoding/json"
 	"io/ioutil"
 	"net/http"
+
+	a "github.com/bdcrisman/rest-api-tutorial/articles"
 )
 
 func CreateNewArticle(w http.ResponseWriter, r *http.Request) {
 	body, _ := ioutil.ReadAll(r.Body)
-	fmt.Fprintf(w, "%+v", string(body))
+	var article a.Article
+	json.Unmarshal(body, &article)
+	a.Articles = append(a.Articles, article)
+	json.NewEncoder(w).Encode(article)
 }

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/bdcrisman/rest-api-tutorial/articles"
+	a "github.com/bdcrisman/rest-api-tutorial/articles"
 	"github.com/gorilla/mux"
 )
 
@@ -16,14 +16,14 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 
 func ReturnAllArticles(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("returnAllArticles endpoint")
-	json.NewEncoder(w).Encode(articles.Articles)
+	json.NewEncoder(w).Encode(a.Articles)
 }
 
 func ReturnSingleArticle(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	key := vars["id"]
 
-	for _, article := range articles.Articles {
+	for _, article := range a.Articles {
 		if article.Id == key {
 			json.NewEncoder(w).Encode(article)
 			break
