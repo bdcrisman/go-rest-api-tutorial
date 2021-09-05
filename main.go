@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/bdcrisman/rest-api-tutorial/articles"
-	"github.com/bdcrisman/rest-api-tutorial/handler"
+	handler "github.com/bdcrisman/rest-api-tutorial/handlers"
 )
 
 func main() {
