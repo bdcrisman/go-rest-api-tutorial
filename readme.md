@@ -5,3 +5,9 @@
 
 ## Deps
 - gorilla/mux
+
+## To Run
+```go run *.go```
+
+## To Test
+```go test ./...```
