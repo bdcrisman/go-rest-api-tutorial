@@ -16,7 +16,7 @@ func HandleRequests() {
 	router := mux.NewRouter().StrictSlash(true)
 
 	// GET
-	router.HandleFunc("/", get.HomePage)
+	router.HandleFunc("/", get.HomePage).Methods("GET")
 	router.HandleFunc("/all", get.ReturnAllArticles).Methods("GET")
 	router.HandleFunc("/article/{id}", get.ReturnSingleArticle).Methods("GET")
 

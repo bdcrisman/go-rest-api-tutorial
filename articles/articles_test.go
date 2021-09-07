@@ -1,7 +1,9 @@
-package articles
+package articles_test
 
 import (
 	"testing"
+
+	. "github.com/bdcrisman/rest-api-tutorial/articles"
 )
 
 func TestPassCreateArticle(t *testing.T) {
